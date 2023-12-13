@@ -1,0 +1,108 @@
+diff --git a/src/helpers.js b/src/helpers.js
+index 92b5714a0f6e71e2abf158e37c5a6d8fb904971c..8a7423153020f5c5e580eca0301b84ace6e3cb24 100644
+--- a/src/helpers.js
++++ b/src/helpers.js
+@@ -31,7 +31,7 @@ module.exports.getConfig = () => {
+   const currentPath = process.cwd();
+ 
+   const defaults = {
+-    lang: 'js',
++    lang: 'ts',
+     dir: 'src/components',
+   };
+ 
+diff --git a/src/index.js b/src/index.js
+index 33bd720bef41967bed9eb6d9cebf656c619aa266..fa17626a432e67eec8bb5392cb75979c16796c3c 100755
+--- a/src/index.js
++++ b/src/index.js
+@@ -36,8 +36,8 @@ program
+   .arguments('<componentName>')
+   .option(
+     '-l, --lang <language>',
+-    'Which language to use (default: "js")',
+-    /^(js|ts)$/i,
++    'Which language to use (default: "ts")',
++    /^(js|ts|jsx)$/i,
+     config.lang
+   )
+   .option(
+@@ -51,8 +51,23 @@ const [componentName] = program.args;
+ 
+ const options = program.opts();
+ 
+-const fileExtension = options.lang === 'js' ? 'js' : 'tsx';
+-const indexExtension = options.lang === 'js' ? 'js' : 'ts';
++let fileExtension, indexExtension;
++
++switch (options.lang) {
++  case 'js':
++    fileExtension = 'js';
++    indexExtension = 'js';
++    break;
++  case 'jsx':
++    fileExtension = 'jsx';
++    indexExtension = 'js';
++    break;
++  case 'ts':
++  default:
++    fileExtension = 'tsx';
++    indexExtension = 'ts';
++    break;
++}
+ 
+ // Find the path to the selected template file.
+ const templatePath = `./templates/${options.lang}.js`;
+@@ -64,8 +79,9 @@ const indexPath = `${componentDir}/index.${indexExtension}`;
+ 
+ // Our index template is super straightforward, so we'll just inline it for now.
+ const indexTemplate = prettify(`\
+-export * from './${componentName}';
+-export { default } from './${componentName}';
++import ${componentName} from './${componentName}';
++
++export default ${componentName};
+ `);
+ 
+ logIntro({
+diff --git a/src/templates/js.js b/src/templates/js.js
+index 296cef96fb8bea5c3455c6558c40d0e6cb14fd59..595247056c73dfbc46da51bd7d1a8caad9666937 100644
+--- a/src/templates/js.js
++++ b/src/templates/js.js
+@@ -1,7 +1,7 @@
+ import React from 'react';
+ 
+ function COMPONENT_NAME() {
+-  return <div></div>;
++  return <></>;
+ }
+ 
+ export default COMPONENT_NAME;
+diff --git a/src/templates/jsx.js b/src/templates/jsx.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..595247056c73dfbc46da51bd7d1a8caad9666937
+--- /dev/null
++++ b/src/templates/jsx.js
+@@ -0,0 +1,7 @@
++import React from 'react';
++
++function COMPONENT_NAME() {
++  return <></>;
++}
++
++export default COMPONENT_NAME;
+diff --git a/src/templates/ts.js b/src/templates/ts.js
+index 9e685083bb3be75d2af0afe6983383ca705fbda8..0a460cfdba2dee8c808f235317e13f712b070540 100644
+--- a/src/templates/ts.js
++++ b/src/templates/ts.js
+@@ -1,7 +1,8 @@
+-import * as React from 'react';
+ 
+-function COMPONENT_NAME() {
+-  return <div></div>;
++type COMPONENT_NAMEProps = {};
++
++function COMPONENT_NAME(props: COMPONENT_NAMEProps) {
++  return null;
+ }
+ 
+ export default COMPONENT_NAME;
