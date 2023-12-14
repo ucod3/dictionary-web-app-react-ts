@@ -1,7 +1,10 @@
-type SearchProps = {};
+import SearchInput from "../SearchInput";
 
-function Search(props: SearchProps) {
-  return null;
+
+function Search() {
+  return (
+    <SearchInput />
+  )
 }
 
 export default Search;
