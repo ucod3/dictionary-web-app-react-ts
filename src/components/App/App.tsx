@@ -1,9 +1,11 @@
-import Search from "../Search";
+import Search from '../Search';
 
 function App() {
   return (
-    <Search />
-  )
+    <main className='container mx-auto '>
+      <Search />
+    </main>
+  );
 }
 
 export default App;
