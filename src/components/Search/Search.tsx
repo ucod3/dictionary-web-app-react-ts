@@ -1,10 +1,9 @@
-import SearchInput from "../SearchInput";
-
+import { useState } from 'react';
+import SearchInput from '../SearchInput';
 
 function Search() {
-  return (
-    <SearchInput />
-  )
+  const [search, setSearch] = useState('');
+  return <SearchInput setSearch={setSearch} />;
 }
 
 export default Search;
