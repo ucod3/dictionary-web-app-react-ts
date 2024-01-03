@@ -1,18 +1,19 @@
 import { useId } from 'react';
 
 type SearchInputProps = {
-  setSearch: (search: string) => void;
+  setInputWord: (search: string) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-function SearchInput({ setSearch }: SearchInputProps) {
+function SearchInput({ setInputWord, handleSubmit }: SearchInputProps) {
   const Id = useId();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(e.target.value);
+    setInputWord(e.target.value);
   }
 
   return (
-    <form className='flex items-center mt-2'>
+    <form className='flex items-center mt-2' onSubmit={handleSubmit}>
       <label htmlFor={`search-input-${Id}`} className='sr-only'>
         Search
       </label>
