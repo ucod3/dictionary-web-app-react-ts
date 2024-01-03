@@ -52,6 +52,22 @@ module.exports = {
     'react/require-default-props': 'off',
     //This rule disallows the spreading of props in JSX. It's set to `off`, meaning it's disabled.
     'react/jsx-props-no-spreading': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
+    'jsx-a11y/label-has-for': [
+      'error',
+      {
+        required: {
+          some: ['nesting', 'id'],
+        },
+      },
+    ],
   },
   settings: {
     // This property specifies the settings for each plugin.
