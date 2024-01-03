@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useSWR from 'swr';
 import SearchInput from '../SearchInput';
+import WordDisplay from '../WordDisplay';
 
 const api = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 
@@ -21,17 +22,29 @@ function Search() {
     fetcher,
   );
 
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setSearchWord(inputWord);
+    },
+    [inputWord],
+  );
+
   if (error) return <div>Error: {error.message}</div>;
   if (!data && searchWord) return <div>Loading...</div>;
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSearchWord(inputWord);
-    console.log(data[0].meanings[0].definitions[0].definition);
-  }
+  // use only the first result from the API
+  const result = data ? data[0] : null;
 
   return (
-    <SearchInput setInputWord={setInputWord} handleSubmit={handleSubmit} />
+    <>
+      <SearchInput
+        inputWord={inputWord}
+        setInputWord={setInputWord}
+        handleSubmit={handleSubmit}
+      />
+      {result && <WordDisplay result={result} />}
+    </>
   );
 }
 
