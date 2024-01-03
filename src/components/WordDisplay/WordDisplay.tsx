@@ -13,6 +13,7 @@ type Definition = {
 type Meaning = {
   partOfSpeech: string;
   definitions: Definition[];
+  synonyms: string[];
 };
 
 type WordResult = {
@@ -27,24 +28,25 @@ type WordDisplayProps = {
 
 function WordDisplay({ result }: WordDisplayProps) {
   const id = useId();
+  const validPhonetics = result.phonetics.filter(
+    (phonetic) => phonetic.text && phonetic.audio,
+  );
+  const firstPhonetic = validPhonetics[0];
   return (
     <section className='p-4'>
       <h2 className='mb-4 text-2xl font-bold'>{result.word}</h2>
-      {result.phonetics.map((phonetic, index) => {
-        const uniquePhoneticId = `${id}-phonetic-${index}`;
-        return (
-          <article key={uniquePhoneticId} className='mb-4'>
-            <p className='text-lg'>{phonetic.text}</p>
-            {phonetic.audio && (
-              <audio controls className='mt-2'>
-                <source src={phonetic.audio} type='audio/mpeg' />
-                <track kind='captions' src='captions.vtt' srcLang='en' />
-                Your browser does not support the audio element.
-              </audio>
-            )}
-          </article>
-        );
-      })}
+      {firstPhonetic && (
+        <article className='mb-4'>
+          <p className='text-lg'>{firstPhonetic.text}</p>
+          <audio controls className='mt-2'>
+            <source src={firstPhonetic.audio} type='audio/mpeg' />
+            <track kind='captions' src='captions.vtt' srcLang='en' />
+            Your browser does not support the audio element.
+          </audio>
+        </article>
+      )}
+
+      <h2 className='mb-2 text-2xl font-bold'>Meaning</h2>
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
         return (
@@ -55,15 +57,24 @@ function WordDisplay({ result }: WordDisplayProps) {
               return (
                 <article key={uniqueDefinitionId} className='mb-2'>
                   <p className='text-lg'>{definition.definition}</p>
-                  {definition.synonyms && (
-                    <p className='mt-2'>
-                      <span className='font-bold'>Synonyms: </span>
-                      {definition.synonyms.join(', ')}
-                    </p>
-                  )}
                 </article>
               );
             })}
+            {meaning.synonyms.length > 0 && (
+              <article className='mb-2'>
+                <h4 className='mb-2 text-lg font-bold'>Synonyms</h4>
+                <ul className='list-disc list-inside'>
+                  {meaning.synonyms.map((synonym, synonymIndex) => {
+                    const uniqueSynonymId = `${uniqueMeaningId}-synonym-${synonymIndex}`;
+                    return (
+                      <li key={uniqueSynonymId} className='mb-1'>
+                        {synonym}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </article>
+            )}
           </article>
         );
       })}
