@@ -20,6 +20,7 @@ type WordResult = {
   word: string;
   phonetics: Phonetic[];
   meanings: Meaning[];
+  sourceUrls: string;
 };
 
 type WordDisplayProps = {
@@ -46,12 +47,12 @@ function WordDisplay({ result }: WordDisplayProps) {
         </article>
       )}
 
-      <h2 className='mb-2 text-2xl font-bold'>Meaning</h2>
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
         return (
           <article key={uniqueMeaningId} className='mb-4'>
-            <h3 className='mb-2 text-xl font-bold'>{meaning.partOfSpeech}</h3>
+            <h3 className='mb-2 font-bold text-1xl'>{meaning.partOfSpeech}</h3>
+            <h3 className='mb-2 font-bold text-l'>Meaning</h3>
             {meaning.definitions.map((definition, definitionIndex) => {
               const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
               return (
@@ -75,6 +76,7 @@ function WordDisplay({ result }: WordDisplayProps) {
                 </ul>
               </article>
             )}
+            <p>Source: {result.sourceUrls} </p>
           </article>
         );
       })}
