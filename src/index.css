@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-gray-darkest: 0deg 0% 2%;
+    --color-gray-darker: 0deg 0% 12%;
+    --color-gray-dark: 0deg 0% 18%;
+    --color-gray: 0deg 0% 23%;
+    --color-gray-light: 0deg 0% 51%;
+    --color-gray-lighter: 0deg 0% 91%;
+    --color-gray-lightest: 0deg 0% 96%;
+    --color-white: 0deg 0% 100%;
+    --color-purple: 274deg 82% 60%;
+    --color-red: 0deg 100% 66%;
+  }
+}
