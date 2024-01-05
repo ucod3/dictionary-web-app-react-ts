@@ -37,14 +37,14 @@ function Search() {
   const result = data ? data[0] : null;
 
   return (
-    <section className='p-4'>
+    <search className='p-4'>
       <SearchInput
         inputWord={inputWord}
         setInputWord={setInputWord}
         handleSubmit={handleSubmit}
       />
       {result && <WordDisplay result={result} />}
-    </section>
+    </search>
   );
 }
 
