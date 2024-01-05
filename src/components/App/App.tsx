@@ -1,10 +1,12 @@
+import Header from '../Header';
 import Search from '../Search';
 
 function App() {
   return (
-    <main className='container mx-auto '>
+    <section className='container mx-auto'>
+      <Header />
       <Search />
-    </main>
+    </section>
   );
 }
 
