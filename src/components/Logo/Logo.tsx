@@ -1,7 +1,5 @@
-type LogoProps = {};
-
-function Logo(props: LogoProps) {
-  return null;
+function Logo() {
+  return <img src='logo.svg' alt='Company Logo' />;
 }
 
 export default Logo;
