@@ -1,7 +1,17 @@
-type MenuProps = {};
+import FontSwitcher from '../FontSwitcher';
+import ThemeSwitcher from '../ThemeSwitcher';
 
-function Menu(props: MenuProps) {
-  return null;
+function Menu() {
+  return (
+    <menu className='flex items-center'>
+      <li>
+        <FontSwitcher />
+      </li>
+      <li>
+        <ThemeSwitcher />
+      </li>
+    </menu>
+  );
 }
 
 export default Menu;
