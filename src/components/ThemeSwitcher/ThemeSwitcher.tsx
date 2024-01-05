@@ -7,7 +7,7 @@ function ThemeSwitcher() {
       viewBox='0 0 81 22'
       fill='none'
       strokeWidth={1.5}
-      className='stroke-gray-darkest hover:stroke-purple'
+      className='transition-colors duration-200 ease-in-out stroke-gray-darkest hover:stroke-purple'
     >
       <path
         strokeLinecap='round'
