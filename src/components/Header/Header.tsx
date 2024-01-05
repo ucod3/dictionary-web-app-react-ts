@@ -1,13 +1,11 @@
-import FontSwitcher from '../FontSwitcher';
 import Logo from '../Logo';
-import ThemeSwitcher from '../ThemeSwitcher';
+import Menu from '../Menu';
 
 function Header() {
   return (
-    <header>
+    <header className='flex justify-between p-6'>
       <Logo />
-      <FontSwitcher />
-      <ThemeSwitcher />
+      <Menu />
     </header>
   );
 }
