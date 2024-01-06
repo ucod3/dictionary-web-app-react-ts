@@ -14,7 +14,7 @@
     --error-foreground: 0deg 100% 66%; /*#FF2552/ hsl(0 100% 66%)  */
   }
 
-  [data-theme='dark'] {
+  [data-mode='dark'] {
     --primary: 0deg 0% 18%; /* #2D2D2D/ hsl(0 0% 18%) */
     --secondary: 0deg 0% 12%; /* #1F1F1F/ hsl(0 0% 12%) */
     --primary-foreground: 0deg 0% 100%; /* #fff */
