@@ -1,30 +1,24 @@
 import useTheme from '../../hooks/useTheme';
-
-type Theme = 'light' | 'dark';
+import { Switch } from '../switch';
+import { Theme } from '../../types/themeTypes';
 
 function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setAndStoreTheme } = useTheme();
 
-  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newTheme = e.target.value as Theme;
-    setTheme(newTheme, true);
+  // console.log('useTheme return value:', { theme, setTheme }); // Add this line
+
+  const handleThemeChange = (isChecked: boolean) => {
+    const newTheme: Theme = isChecked ? 'dark' : 'light';
+    setAndStoreTheme(newTheme, true);
   };
 
   return (
     <>
-      {/* create a toggle switch */}
-      <label htmlFor='theme-switcher' className='sr-only'>
-        Theme
-      </label>
-      <select
-        id='theme-switcher'
+      <Switch
+        checked={theme === 'dark'}
         onChange={handleThemeChange}
-        value={theme}
         className='w-10 h-10 bg-gray-200 rounded-full focus:outline-none'
-      >
-        <option value='light'>Light</option>
-        <option value='dark'>Dark</option>
-      </select>
+      />
 
       <svg
         xmlns='http://www.w3.org/2000/svg'
