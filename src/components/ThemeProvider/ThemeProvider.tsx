@@ -21,12 +21,16 @@ const initialState: ThemeProviderState = {
 const ThemeContext = createContext<ThemeProviderState>(initialState);
 function ThemeProvider({
   children,
- defaultTheme = 'system',
-storageKey = 'theme',
+  defaultTheme = 'system',
+  storageKey = 'theme',
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(() => {
     const storedTheme = localStorage.getItem(storageKey);
-    if (storedTheme) {
+    if (
+      storedTheme === 'dark' ||
+      storedTheme === 'light' ||
+      storedTheme === 'system'
+    ) {
       return storedTheme;
     }
     if (defaultTheme === 'system') {
@@ -36,26 +40,21 @@ storageKey = 'theme',
     }
     return defaultTheme;
   });
-
-  const setAndStoreTheme = (newTheme: Theme) => {
+  useEffect(() => {
     const root = window.document.documentElement;
-    let finalTheme = newTheme;
 
-    if (newTheme === 'system') {
-      finalTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches
         ? 'dark'
         : 'light';
+      root.setAttribute('data-mode', systemTheme);
+    } else {
+      root.setAttribute('data-mode', theme);
     }
 
-    root.setAttribute('data-mode', finalTheme);
-    localStorage.setItem(storageKey, finalTheme);
-    setTheme(finalTheme);
-  };
-
-  useEffect(() => {
-    setAndStoreTheme(theme);
-  }, [theme]);
-}
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
 
   const value = useMemo(
     () => ({
