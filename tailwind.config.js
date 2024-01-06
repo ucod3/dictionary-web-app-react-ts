@@ -4,18 +4,15 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      textColor: {
-        'gray-dark': 'hsl(var(--color-gray-dark) / <alpha-value>)',
-      },
-      'gray-darkest': 'hsl(var(--color-gray-darkest) / <alpha-value>)',
-      'gray-darker': 'hsl(var(--color-gray-darker) / <alpha-value>)',
-      gray: 'hsl(var(--color-gray) / <alpha-value>)',
-      'gray-light': 'hsl(var(--color-gray-light) / <alpha-value>)',
-      'gray-lighter': 'hsl(var(--color-gray-lighter) / <alpha-value>)',
-      'gray-lightest': 'hsl(var(--color-gray-lightest) / <alpha-value>)',
-      white: 'hsl(var(--color-white) / <alpha-value>)',
-      purple: 'hsl(var(--color-purple) / <alpha-value>)',
-      red: 'hsl(var(--color-red) / <alpha-value>)',
+      'primary-foreground': 'hsl(var(--primary-foreground) / <alpha-value>)',
+      'primary-accent': 'hsl(var(--primary-accent) / <alpha-value>)',
+      'secondary-foreground':
+        'hsl(var(--secondary-foreground) / <alpha-value>)',
+      primary: 'hsl(var(--primary) / <alpha-value>)',
+      secondary: 'hsl(var(--secondary) / <alpha-value>)',
+      'toggle-accent': 'hsl(var(--toggle-accent) / <alpha-value>)',
+      error: 'hsl(var(--error) / <alpha-value>)',
+      'error-foreground': 'hsl(var(--error-foreground) / <alpha-value>)',
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
