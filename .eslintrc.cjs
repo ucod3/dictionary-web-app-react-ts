@@ -68,6 +68,7 @@ module.exports = {
         },
       },
     ],
+    'react/prop-types': 'off',
   },
   settings: {
     // This property specifies the settings for each plugin.
