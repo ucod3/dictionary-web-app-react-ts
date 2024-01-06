@@ -4,15 +4,24 @@
 
 @layer base {
   :root {
-    --color-gray-darkest: 0deg 0% 2%;
-    --color-gray-darker: 0deg 0% 12%;
-    --color-gray-dark: 0deg 0% 18%;
-    --color-gray: 0deg 0% 23%;
-    --color-gray-light: 0deg 0% 51%;
-    --color-gray-lighter: 0deg 0% 91%;
-    --color-gray-lightest: 0deg 0% 96%;
-    --color-white: 0deg 0% 100%;
-    --color-purple: 274deg 82% 60%;
-    --color-red: 0deg 100% 66%;
+    --primary: 0deg 0% 100%; /* #fff */
+    --secondary: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
+    --primary-foreground: 0deg 0% 18%; /*  #2D2D2D/ hsl(0 0% 18%) */
+    --secondary-foreground: 0deg 0% 51%; /*  #757575/hsl(0 0% 51%)) */
+    --primary-accent: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
+    --toggle-accent: 0deg 0% 51%; /*   #757575/hsl(0 0% 51%) */
+    --error: 0deg 100% 66%; /* #FF2552/ hsl(0 100% 66%) */
+    --error-foreground: 0deg 100% 66%; /*#FF2552/ hsl(0 100% 66%)  */
+  }
+
+  [data-theme='dark'] {
+    --primary: 0deg 0% 18%; /* #2D2D2D/ hsl(0 0% 18%) */
+    --secondary: 0deg 0% 12%; /* #1F1F1F/ hsl(0 0% 12%) */
+    --primary-foreground: 0deg 0% 100%; /* #fff */
+    --secondary-foreground: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
+    --primary-accent: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
+    --toggle-accent: 0deg 0% 51%; /*   #757575/hsl(0 0% 51%) */
+    --error: 0deg 100% 66%; /* #FF2552/ hsl(0 100% 66%) */
+    --error-foreground: 0deg 100% 66%; /*#FF2552/ hsl(0 100% 66%)  */
   }
 }
