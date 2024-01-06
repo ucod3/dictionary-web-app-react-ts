@@ -1,12 +1,15 @@
 import Header from '../Header';
 import Search from '../Search';
+import ThemeProvider from '../ThemeProvider';
 
 function App() {
   return (
-    <section className='container mx-auto'>
-      <Header />
-      <Search />
-    </section>
+    <ThemeProvider>
+      <section className='container mx-auto'>
+        <Header />
+        <Search />
+      </section>
+    </ThemeProvider>
   );
 }
 
