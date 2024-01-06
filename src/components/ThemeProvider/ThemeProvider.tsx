@@ -24,7 +24,8 @@ const initialState: ThemeProviderState = {
   setTheme: () => {},
 };
 
-const ThemeContext = createContext<ThemeProviderState>(initialState);
+export const ThemeContext = createContext<ThemeProviderState>(initialState);
+
 function ThemeProvider({
   children,
   defaultTheme = 'system',
