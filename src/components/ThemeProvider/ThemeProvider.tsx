@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 
-type Theme = 'dark' | 'light' | 'system';
+import { Theme } from '../../types/themeTypes';
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -16,12 +16,12 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme;
-  setTheme: (theme: Theme) => void;
+  setAndStoreTheme: (theme: Theme, shouldStore: boolean) => void;
 };
 
 const initialState: ThemeProviderState = {
   theme: 'system',
-  setTheme: () => {},
+  setAndStoreTheme: () => {},
 };
 
 export const ThemeContext = createContext<ThemeProviderState>(initialState);
@@ -45,7 +45,7 @@ function ThemeProvider({
   });
 
   const setAndStoreTheme = useCallback(
-    (newTheme: Theme, userInitiated: boolean = false) => {
+    (newTheme: Theme, shouldStore: boolean = false) => {
       const root = window.document.documentElement;
       let finalTheme = newTheme;
 
@@ -56,7 +56,7 @@ function ThemeProvider({
       }
 
       root.setAttribute('data-mode', finalTheme);
-      if (userInitiated) {
+      if (shouldStore) {
         localStorage.setItem(storageKey, finalTheme);
       }
       setTheme(finalTheme);
@@ -87,7 +87,7 @@ function ThemeProvider({
   const value = useMemo(
     () => ({
       theme,
-      setTheme: setAndStoreTheme, // Use setAndStoreTheme here
+      setAndStoreTheme, // Use setAndStoreTheme here
     }),
     [theme, setAndStoreTheme],
   );
