@@ -45,7 +45,7 @@ function ThemeProvider({
   });
 
   const setAndStoreTheme = useCallback(
-    (newTheme: Theme) => {
+    (newTheme: Theme, userInitiated: boolean = false) => {
       const root = window.document.documentElement;
       let finalTheme = newTheme;
 
@@ -56,7 +56,9 @@ function ThemeProvider({
       }
 
       root.setAttribute('data-mode', finalTheme);
-      localStorage.setItem(storageKey, finalTheme);
+      if (userInitiated) {
+        localStorage.setItem(storageKey, finalTheme);
+      }
       setTheme(finalTheme);
     },
     [storageKey],
@@ -66,15 +68,28 @@ function ThemeProvider({
     setAndStoreTheme(theme);
   }, [theme, setAndStoreTheme]);
 
+  // Listen for changes to the system's preferred color scheme and update the theme
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => {
+      const newTheme = mediaQuery.matches ? 'dark' : 'light';
+      setAndStoreTheme(newTheme);
+    };
+
+    // Add the listener
+    mediaQuery.addEventListener('change', handleChange);
+
+    // Clean up the listener when the component unmounts
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, [setAndStoreTheme]);
+
   const value = useMemo(
     () => ({
       theme,
-      setTheme: (newTheme: Theme) => {
-        localStorage.setItem(storageKey, newTheme);
-        setTheme(newTheme);
-      },
+      setTheme: setAndStoreTheme, // Use setAndStoreTheme here
     }),
-    [theme, storageKey],
+    [theme, setAndStoreTheme],
   );
 
   return (
