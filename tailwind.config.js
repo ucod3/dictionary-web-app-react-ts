@@ -27,6 +27,15 @@ module.exports = {
       'body-m': ['18px', '24px'],
       'body-s': ['14px', '17px'],
     },
+    fontWeight: {
+      normal: '400',
+      bold: '700',
+    },
+    fontStyle: {
+      normal: 'normal',
+      italic: 'italic',
+    },
+
     extend: {},
   },
 
