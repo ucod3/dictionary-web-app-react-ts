@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --primary: 0deg 0% 100%; /* #fff */
+    --primary-text: 0deg 0% 100%; /* #fff */
     --secondary: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
     --primary-foreground: 0deg 0% 18%; /*  #2D2D2D/ hsl(0 0% 18%) */
     --secondary-foreground: 0deg 0% 51%; /*  #757575/hsl(0 0% 51%)) */
@@ -16,7 +17,8 @@
   }
 
   [data-mode='dark'] {
-    --primary: 0deg 0% 18%; /* #2D2D2D/ hsl(0 0% 18%) */
+    --primary: 0deg 0% 2%; /* #050505/ hsl(0 0% 2%) */
+    --primary-text: 0deg 0% 18%; /* #2D2D2D/ hsl(0 0% 18%) */
     --secondary: 0deg 0% 12%; /* #1F1F1F/ hsl(0 0% 12%) */
     --primary-foreground: 0deg 0% 100%; /* #fff */
     --secondary-foreground: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
@@ -25,5 +27,56 @@
     --toggle-fg: 0deg 0% 100%; /*   #fff/hsl(0 0% 100%) */
     --error: 0deg 100% 66%; /* #FF2552/ hsl(0 100% 66%) */
     --error-foreground: 0deg 100% 66%; /*#FF2552/ hsl(0 100% 66%)  */
+  }
+
+  @font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/Lora/static/Lora-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/Lora/static/Lora-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Lora';
+    font-style: italic;
+    font-weight: bold;
+    src: url('/fonts/Lora/static/Lora-BoldItalic.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/Inter/static/Inter-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/Inter/static/Inter-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/Inconsolata/static/Inconsolata-Regular.ttf')
+      format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inconsolata';
+    font-style: normal;
+    font-weight: bold;
+    src: url('/fonts/Inconsolata/static/Inconsolata-Bold.ttf')
+      format('truetype');
   }
 }
