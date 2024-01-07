@@ -37,7 +37,7 @@ function Search() {
   const result = data ? data[0] : null;
 
   return (
-    <search className='p-4'>
+    <search className='p-4 text-primary-foreground'>
       <SearchInput
         inputWord={inputWord}
         setInputWord={setInputWord}
