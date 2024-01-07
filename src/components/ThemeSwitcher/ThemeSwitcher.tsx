@@ -5,8 +5,6 @@ import { Theme } from '../../types/themeTypes';
 function ThemeSwitcher() {
   const { theme, setAndStoreTheme } = useTheme();
 
-  // console.log('useTheme return value:', { theme, setTheme }); // Add this line
-
   const handleThemeChange = (isChecked: boolean) => {
     const newTheme: Theme = isChecked ? 'dark' : 'light';
     setAndStoreTheme(newTheme, true);
