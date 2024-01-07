@@ -16,8 +16,7 @@ function ThemeSwitcher() {
     <div className='flex items-center gap-0'>
       <Switch
         checked={theme === 'dark'}
-        className='border-style-none'
-        color='dark/white'
+        className='focus:ring-0 focus:outline-none'
         onChange={handleThemeChange}
       />
 
