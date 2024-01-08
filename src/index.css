@@ -7,6 +7,7 @@
     --primary: 0deg 0% 100%; /* #fff */
     --primary-text: 0deg 0% 100%; /* #fff */
     --secondary: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
+    --secondary-accent: 0deg 0% 91%; /* #E9E9E9/hsl(0 0% 91%))  */
     --primary-foreground: 0deg 0% 18%; /*  #2D2D2D/ hsl(0 0% 18%) */
     --secondary-foreground: 0deg 0% 51%; /*  #757575/hsl(0 0% 51%)) */
     --primary-accent: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
@@ -23,6 +24,8 @@
     --primary-foreground: 0deg 0% 100%; /* #fff */
     --secondary-foreground: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
     --primary-accent: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
+    --secondary-accent: 0deg 0% 91%; /* #E9E9E9/hsl(0 0% 91%))  */
+
     --toggle-bg: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
     --toggle-fg: 0deg 0% 100%; /*   #fff/hsl(0 0% 100%) */
     --error: 0deg 100% 66%; /* #FF2552/ hsl(0 100% 66%) */

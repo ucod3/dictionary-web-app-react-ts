@@ -6,6 +6,7 @@ module.exports = {
     colors: {
       'primary-foreground': 'hsl(var(--primary-foreground) / <alpha-value>)',
       'primary-accent': 'hsl(var(--primary-accent) / <alpha-value>)',
+      'secondary-accent': 'hsl(var(--secondary-accent) / <alpha-value>)',
       'secondary-foreground':
         'hsl(var(--secondary-foreground) / <alpha-value>)',
       primary: 'hsl(var(--primary) / <alpha-value>)',
