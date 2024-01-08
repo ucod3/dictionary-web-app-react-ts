@@ -19,7 +19,7 @@ function SearchInput({
 
   return (
     <form
-      className='relative flex items-center justify-between '
+      className='relative flex items-center justify-between py-6 md:py-12'
       onSubmit={handleSubmit}
     >
       <label htmlFor={`search-input-${Id}`} className='sr-only'>
