@@ -19,7 +19,7 @@ function SearchInput({
 
   return (
     <form
-      className='relative flex items-center justify-between mt-2'
+      className='relative flex items-center justify-between '
       onSubmit={handleSubmit}
     >
       <label htmlFor={`search-input-${Id}`} className='sr-only'>
@@ -32,17 +32,28 @@ function SearchInput({
         value={inputWord}
         onChange={handleChange}
         placeholder='Search for any word…'
-        className='block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+        className='relative block w-full py-4 pl-6 font-bold border-0 shadow-sm rounded-2xl text-body-m bg-secondary text-primary-foreground ring-1 ring-inset ring-secondary placeholder:text-primary-foreground placeholder:opacity-25 focus:ring-2 focus:ring-inset focus:ring-primary-accent '
       />
 
-      <img
+      {/* <img
         src='icon-search.svg'
         alt='Search'
-        className='absolute right-0 pr-3 pointer-events-none inset-y-2 '
-      />
-      {/* <svg className='absolute right-0 pr-3 bg-blue-500 pointer-events-none inset-y-2 '>
-        <use xlinkHref='icon-search.svg' />
-      </svg> */}
+        className='absolute right-0 pr-3 pointer-events-none inset-y-4 '
+      /> */}
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 24 24'
+        strokeWidth={1.5}
+        stroke='currentColor'
+        className='absolute right-0 w-6 h-6 mr-6 pointer-events-none text-primary-accent'
+      >
+        <path
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
+        />
+      </svg>
     </form>
   );
 }
