@@ -7,7 +7,7 @@ function FontSwitcher() {
       <select
         id='location'
         name='location'
-        className='border-0 text-primary-foreground-700 bg-primary'
+        className='font-serif border-0 text-primary-foreground bg-primary'
         defaultValue='Sans Serif'
       >
         <option>Sans Serif</option>
