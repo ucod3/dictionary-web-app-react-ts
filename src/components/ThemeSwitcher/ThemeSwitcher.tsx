@@ -11,7 +11,7 @@ function ThemeSwitcher() {
   };
 
   return (
-    <div className='flex items-center gap-0'>
+    <div className='flex items-center '>
       <Switch
         checked={theme === 'dark'}
         className='focus:ring-0 focus:outline-none'
@@ -25,7 +25,7 @@ function ThemeSwitcher() {
         viewBox='0 0 81 22'
         fill='none'
         strokeWidth={1.5}
-        className='p-0 transition-colors duration-200 ease-in-out stroke-primary-accent hover:stroke-primary-accent ml-[-36px]'
+        className='p-0 -ml-12 transition-colors duration-200 ease-in-out stroke-primary-accent hover:stroke-primary-accent'
       >
         <path
           strokeLinecap='round'
