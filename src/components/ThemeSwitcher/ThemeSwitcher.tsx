@@ -25,7 +25,7 @@ function ThemeSwitcher() {
         viewBox='0 0 81 22'
         fill='none'
         strokeWidth={1.5}
-        className='p-0 -ml-12 transition-colors duration-200 ease-in-out stroke-primary-accent hover:stroke-primary-accent'
+        className='p-0 -ml-12 transition-colors duration-200 ease-in-out stroke-toggle-bg hover:stroke-primary-accent'
       >
         <path
           strokeLinecap='round'
