@@ -34,7 +34,7 @@ function WordDisplay({ result }: WordDisplayProps) {
   );
   const firstPhonetic = validPhonetics[0];
   return (
-    <section className='p-4'>
+    <section className='pt-5'>
       <h2 className='mb-4 text-2xl font-bold'>{result.word}</h2>
       {firstPhonetic && (
         <article className='mb-4'>
