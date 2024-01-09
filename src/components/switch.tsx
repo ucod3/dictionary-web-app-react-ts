@@ -87,7 +87,7 @@ export function Switch({
         'transition duration-0 ease-in-out data-[changing]:duration-200',
 
         // Outline and background color in forced-colors mode so switch is still visible
-        'forced-colors:outline forced-colors:[--switch-bg:Highlight] dark:forced-colors:[--switch-bg:Highlight]',
+        'forced-colors:outline forced-colors:[--switch-bg:Highlight] ]',
 
         // Unchecked
         'bg-[--switch-bg] :ring-[--switch-bg-ring]]',
@@ -96,7 +96,8 @@ export function Switch({
         'data-[checked]:bg-[--switch-bg] data-[checked]:ring-[--switch-bg-ring]',
 
         // Focus
-        'focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:[--switch]',
+        'focus:outline-none',
+        // 'focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:[--switch]',
 
         // Color specific styles
         colors[color as Color],
