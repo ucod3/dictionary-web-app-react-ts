@@ -87,7 +87,7 @@ function ThemeProvider({
   const value = useMemo(
     () => ({
       theme,
-      setAndStoreTheme, // Use setAndStoreTheme here
+      setAndStoreTheme,
     }),
     [theme, setAndStoreTheme],
   );
