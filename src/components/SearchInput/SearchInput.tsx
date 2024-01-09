@@ -1,4 +1,5 @@
-import { useId } from 'react';
+import { useId, useCallback } from 'react';
+import Input from '../input';
 
 type SearchInputProps = {
   inputWord: string;
@@ -13,9 +14,12 @@ function SearchInput({
 }: SearchInputProps) {
   const Id = useId();
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setInputWord(e.target.value);
-  }
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputWord(e.target.value);
+    },
+    [setInputWord],
+  );
 
   return (
     <form
@@ -25,21 +29,15 @@ function SearchInput({
       <label htmlFor={`search-input-${Id}`} className='sr-only'>
         Search
       </label>
-      <input
+      <Input
+        aria-label='Search'
         id={`search-input-${Id}`}
         type='text'
         name='search'
         value={inputWord}
         onChange={handleChange}
         placeholder='Search for any word…'
-        className='relative block w-full py-4 pl-6 font-bold border-0 shadow-sm rounded-2xl text-body-m bg-secondary text-primary-foreground ring-1 ring-inset ring-secondary placeholder:text-primary-foreground placeholder:opacity-25 focus:ring-2 focus:ring-inset focus:ring-primary-accent '
       />
-
-      {/* <img
-        src='icon-search.svg'
-        alt='Search'
-        className='absolute right-0 pr-3 pointer-events-none inset-y-4 '
-      /> */}
       <svg
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
