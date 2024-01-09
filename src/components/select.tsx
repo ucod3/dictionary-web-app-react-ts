@@ -40,7 +40,7 @@ const Select = forwardRef<HTMLSelectElement, HeadlessSelectProps>(
             '[&_optgroup]:font-bold',
 
             // Typography
-            'text-sm sm:text-md text-primary-foreground placeholder:text-primary-foreground  ',
+            'text-sm sm:text-md text-primary-foreground placeholder:text-primary-foreground',
 
             // Border
             'border-0',
