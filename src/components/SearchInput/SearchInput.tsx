@@ -1,4 +1,5 @@
-import { useId, useCallback } from 'react';
+import React, { useId, useCallback, useState } from 'react';
+// import { ErrorMessage, Field } from '../fieldset';
 import Input from '../input';
 
 type SearchInputProps = {
@@ -13,19 +14,34 @@ function SearchInput({
   handleSubmit,
 }: SearchInputProps) {
   const Id = useId();
+  const [isError, setIsError] = useState(false);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setInputWord(e.target.value);
+      if (isError) {
+        setIsError(false);
+      }
     },
-    [setInputWord],
+    [setInputWord, isError],
   );
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!inputWord.trim()) {
+      setIsError(true);
+      return;
+    }
+    handleSubmit(e);
+    // setIsError(false);
+  };
 
   return (
     <form
       className='relative flex items-center justify-between py-6 md:py-12'
-      onSubmit={handleSubmit}
+      onSubmit={handleFormSubmit}
     >
+      {/* <Field> */}
       <label htmlFor={`search-input-${Id}`} className='sr-only'>
         Search
       </label>
@@ -37,7 +53,14 @@ function SearchInput({
         value={inputWord}
         onChange={handleChange}
         placeholder='Search for any word…'
+        invalid={isError}
       />
+      {isError && (
+        <div className='text-error' id={`search-input-${Id}-error`}>
+          Whoops, can&apos;t be empty...
+        </div>
+      )}
+      {/* </Field> */}
       <svg
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
