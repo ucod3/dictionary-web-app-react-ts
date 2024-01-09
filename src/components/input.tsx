@@ -38,14 +38,13 @@ const Input = forwardRef<
         'dark:before:hidden',
 
         // Focus ring
-        // 'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-transparent sm:after:focus-within:ring-2sm:after:focus-within:ring-primary-accent',
         'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-primary-accent sm:after:has-[[data-focus]]:ring-2 sm:after:has-[[data-focus]]:ring-primary-accent',
 
         // Active
         'active:ring-2 active:rounded-lg  active:ring-primary-accent',
 
         // Hover
-        'hover:ring-2 hover:rounded-lg  hover:ring-primary-accent has-[[data-invalid]]:ring-2]]  has-[[data-invalid]]:hover:rounded-lg]] has-[[data-invalid]]:hover:ring-error]]',
+        'hover:ring-2 hover:rounded-lg  hover:ring-primary-accent',
 
         // Disabled state
         'has-[[data-disabled]]:opacity-50 before:has-[[data-disabled]]:bg-secondary-foreground before:has-[[data-disabled]]:shadow-none',
@@ -92,7 +91,7 @@ const Input = forwardRef<
           'focus:outline-none ',
 
           // Invalid state
-          'data-[invalid]:ring-2 data-[invalid]:ring-error ',
+          'data-[invalid]:ring-2 data-[invalid]:rounded-lg data-[invalid]:ring-error hover:has-[[data-invalid]]:ring-0]] ',
 
           // Disabled state
           'data-[disabled]:border-secondary-foreground',
