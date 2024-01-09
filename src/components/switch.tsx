@@ -96,8 +96,8 @@ export function Switch({
         'data-[checked]:bg-[--switch-bg] data-[checked]:ring-[--switch-bg-ring]',
 
         // Focus
-        'focus:outline-none',
-        // 'focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:[--switch]',
+        // 'focus:outline-none',
+        'focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-primary-accent',
 
         // Color specific styles
         colors[color as Color],
