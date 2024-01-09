@@ -22,11 +22,13 @@ module.exports = {
       mono: ['Inconsolata', 'monospace'],
     },
     fontSize: {
-      'heading-l': ['64px', '77px'],
-      'heading-m': ['24px', '29px'],
-      'heading-s': ['20px', '24px'],
-      'body-m': ['18px', '24px'],
-      'body-s': ['14px', '17px'],
+      sm: ['14px', '17px'],
+      'base-b': ['15px', '24px'],
+      base: ['16px', '24px'],
+      md: ['18px', '24px'],
+      lg: ['20px', '24px'],
+      xl: ['24px', '29px'],
+      '2xl': ['64px', '77px'],
     },
     fontWeight: {
       normal: '400',
