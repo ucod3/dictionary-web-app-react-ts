@@ -40,8 +40,8 @@ function WordDisplay({ result }: WordDisplayProps) {
   const [hover, setHover] = useState(false);
 
   return (
-    <section>
-      <article
+    <article>
+      <section
         className={`flex items-center justify-between ${hover ? 'hover' : ''}`}
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
@@ -72,12 +72,11 @@ function WordDisplay({ result }: WordDisplayProps) {
             <path className='path' d='M29 27v21l21-10.5z' />
           </g>
         </svg>
-      </article>
-
+      </section>
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
         return (
-          <article key={uniqueMeaningId} className='mb-4'>
+          <section key={uniqueMeaningId}>
             <h3 className='text-xl font-bold my-9 '>
               <div className='flex items-center'>
                 {meaning.partOfSpeech}
@@ -86,17 +85,19 @@ function WordDisplay({ result }: WordDisplayProps) {
             </h3>
 
             <h3 className='mb-2 font-bold text-l'>Meaning</h3>
-            {meaning.definitions.map((definition, definitionIndex) => {
-              const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
-              return (
-                <article key={uniqueDefinitionId} className='mb-2'>
-                  <p className='text-lg'>{definition.definition}</p>
-                </article>
-              );
-            })}
+            <ul className='ml-6 list-disc list-outside marker:text-primary-accent'>
+              {meaning.definitions.map((definition, definitionIndex) => {
+                const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
+                return (
+                  <li key={uniqueDefinitionId} className='mb-[13px]'>
+                    {definition.definition}
+                  </li>
+                );
+              })}
+            </ul>
 
             {meaning.synonyms.length > 0 && (
-              <article className='mb-2'>
+              <section className='mb-2'>
                 <h4 className='mb-2 text-lg font-bold'>Synonyms</h4>
                 <ul className='list-disc list-inside'>
                   {meaning.synonyms.map((synonym, synonymIndex) => {
@@ -108,13 +109,13 @@ function WordDisplay({ result }: WordDisplayProps) {
                     );
                   })}
                 </ul>
-              </article>
+              </section>
             )}
-            <p>Source: {result.sourceUrls} </p>
-          </article>
+          </section>
         );
       })}
-    </section>
+      <p>Source: {result.sourceUrls} </p>
+    </article>
   );
 }
 
