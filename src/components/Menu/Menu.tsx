@@ -6,7 +6,7 @@ function Menu() {
     <menu className='flex items-center '>
       <li className='flex items-center'>
         <FontSwitcher />
-        <span className='after:content-[""] border h-8 text-secondary-accent mx-4 md:mx-6' />
+        <span className='after:content-[""] border h-8 text-toggle-accent mx-4 md:mx-6' />
       </li>
       <li>
         <ThemeSwitcher />
