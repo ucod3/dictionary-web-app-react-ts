@@ -5,22 +5,32 @@ import WordDisplay from '../WordDisplay';
 
 const api = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 
-async function fetcher(url: string) {
-  const res = await fetch(url);
-  if (!res.ok) {
-    return { error: true };
-  }
-  return res.json();
-}
-
 function Search() {
   const [inputWord, setInputWord] = useState('');
   const [searchWord, setSearchWord] = useState('');
   const [wordNotFound, setWordNotFound] = useState(false);
+  const [result, setResult] = useState(null);
+
+  const fetcher = async (url: string) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('No Definitions Found');
+    }
+
+    const data = await response.json();
+    return data[0];
+  };
 
   const { data, error } = useSWR(
-    searchWord ? () => `${api}${searchWord}` : null,
+    searchWord ? `${api}${searchWord}` : null,
     fetcher,
+    {
+      onError: () => setWordNotFound(true),
+      onSuccess: (apiData) => {
+        setResult(apiData);
+        setWordNotFound(false);
+      },
+    },
   );
 
   const handleSubmit = useCallback(
@@ -36,11 +46,7 @@ function Search() {
     setSearchWord(word); // perform the search with the new word
   };
 
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data && searchWord) return <div>Loading...</div>;
-
-  // use only the first result from the API
-  const result = data ? data[0] : null;
+  if (!data && searchWord && !wordNotFound) return <div>Loading...</div>;
 
   return (
     <search className='text-primary-foreground'>
@@ -51,7 +57,7 @@ function Search() {
       />
       {result && (
         <WordDisplay
-          result={result}
+          result={result || null}
           setSearchWord={updateSearchWord}
           wordNotFound={wordNotFound}
         />
