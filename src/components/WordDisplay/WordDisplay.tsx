@@ -8,6 +8,7 @@ type Phonetic = {
 type Definition = {
   definition: string;
   synonyms: string[];
+  example: string;
 };
 
 type Meaning = {
@@ -75,22 +76,34 @@ function WordDisplay({ result }: WordDisplayProps) {
       </section>
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
+        const uniquePartOfSpeechId = `${uniqueMeaningId}-part-of-speech`;
         return (
-          <section key={uniqueMeaningId}>
-            <h3 className='text-xl font-bold my-9 '>
-              <div className='flex items-center'>
-                {meaning.partOfSpeech}
-                <hr className='flex-grow ml-4 border-secondary-accent' />
-              </div>
-            </h3>
+          <section key={uniquePartOfSpeechId}>
+            <div className='flex items-center mb-5 mt-7 md:mt-10 md:mb-6'>
+              <h3 className='text-xl font-bold'>{meaning.partOfSpeech}</h3>
+              <hr className='flex-grow ml-4 border-secondary-accent' />
+            </div>
 
             <h3 className='mb-2 font-bold text-l'>Meaning</h3>
-            <ul className='ml-6 list-disc list-outside marker:text-primary-accent'>
+            <ul
+              key={uniqueMeaningId}
+              className={`mx-6 md:mx-9 mt-6 list-disc list-outside marker:text-primary-accent ${
+                meaning.synonyms.length > 0 ? 'mb-6 md:mb-10 lg:mb-16' : ''
+              }`}
+            >
               {meaning.definitions.map((definition, definitionIndex) => {
                 const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
                 return (
-                  <li key={uniqueDefinitionId} className='mb-[13px]'>
+                  <li
+                    key={uniqueDefinitionId}
+                    className='mb-[13px] text-base-b md:text-md '
+                  >
                     {definition.definition}
+                    {definition.example && (
+                      <blockquote className='text-base-b md:text-md  text-quote-foreground my-[13px] before:content-["“"] after:content-["”"]'>
+                        {definition.example}
+                      </blockquote>
+                    )}
                   </li>
                 );
               })}
@@ -100,10 +113,10 @@ function WordDisplay({ result }: WordDisplayProps) {
               <section className='mb-2'>
                 <h4 className='mb-2 text-lg font-bold'>Synonyms</h4>
                 <ul className='list-disc list-inside'>
-                  {meaning.synonyms.map((synonym, synonymIndex) => {
+                  {meaning.synonyms.slice(0, 3).map((synonym, synonymIndex) => {
                     const uniqueSynonymId = `${uniqueMeaningId}-synonym-${synonymIndex}`;
                     return (
-                      <li key={uniqueSynonymId} className='mb-1'>
+                      <li key={uniqueSynonymId} className='mb-1 list-none'>
                         {synonym}
                       </li>
                     );
@@ -114,7 +127,10 @@ function WordDisplay({ result }: WordDisplayProps) {
           </section>
         );
       })}
-      <p>Source: {result.sourceUrls} </p>
+      <footer className='mt-8'>
+        <hr className='flex-grow border-secondary-accent' />
+        <p>Source: {result.sourceUrls} </p>
+      </footer>
     </article>
   );
 }
