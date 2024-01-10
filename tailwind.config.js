@@ -30,6 +30,7 @@ module.exports = {
       md: ['18px', '24px'],
       lg: ['20px', '24px'],
       xl: ['24px', '29px'],
+      '1xl': ['32px', '36px'],
       '2xl': ['64px', '77px'],
     },
     fontWeight: {
