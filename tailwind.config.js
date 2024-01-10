@@ -13,6 +13,7 @@ module.exports = {
       secondary: 'hsl(var(--secondary) / <alpha-value>)',
       'toggle-bg': 'hsl(var(--toggle-bg) / <alpha-value>)',
       'toggle-fg': 'hsl(var(--toggle-fg) / <alpha-value>)',
+      'toggle-accent': 'hsl(var(--toggle-accent) / <alpha-value>)',
       error: 'hsl(var(--error) / <alpha-value>)',
       'error-foreground': 'hsl(var(--error-foreground) / <alpha-value>)',
     },
