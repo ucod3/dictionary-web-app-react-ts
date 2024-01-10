@@ -12,6 +12,7 @@
     --primary-accent: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
     --toggle-bg: 0deg 0% 51%; /*   #757575/hsl(0 0% 51%) */
     --toggle-fg: 0deg 0% 100%; /*   #fff/hsl(0 0% 100%) */
+    --toggle-accent: 0deg 0% 91%; /* #E9E9E9/hsl(0 0% 91%))  */
     --error: 0deg 100% 66%; /* #FF2552/ hsl(0 100% 66%) */
     --error-foreground: 0deg 100% 66%; /*#FF2552/ hsl(0 100% 66%)  */
   }
@@ -22,10 +23,11 @@
     --primary-foreground: 0deg 0% 100%; /* #fff */
     --secondary-foreground: 0deg 0% 96%; /* #F4F4F4/hsl(0 0% 96%))  */
     --primary-accent: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
-    --secondary-accent: 0deg 0% 91%; /* #E9E9E9/hsl(0 0% 91%))  */
+    --secondary-accent: 0deg 0% 23%; /* #3A3A3A/hsl(0 0% 23%))  */
 
     --toggle-bg: 274deg 82% 60%; /* ##A445ED/hsl(247 82% 60%) */
     --toggle-fg: 0deg 0% 100%; /*   #fff/hsl(0 0% 100%) */
+
     --error: 0deg 100% 66%; /* #FF2552/ hsl(0 100% 66%) */
     --error-foreground: 0deg 100% 66%; /*#FF2552/ hsl(0 100% 66%)  */
   }
@@ -94,5 +96,11 @@
 
   .hover .path {
     fill: #fff;
+  }
+}
+
+@layer components {
+  .hr {
+    border-top: 1px solid #000;
   }
 }
