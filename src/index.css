@@ -80,4 +80,19 @@
     src: url('/fonts/inconsolata/static/Inconsolata-Bold.ttf')
       format('truetype');
   }
+  .circle {
+    opacity: 0.25;
+  }
+
+  .path {
+    fill: #a445ed;
+  }
+
+  .hover .circle {
+    opacity: 1;
+  }
+
+  .hover .path {
+    fill: #fff;
+  }
 }
