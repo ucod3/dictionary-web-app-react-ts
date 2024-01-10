@@ -8,7 +8,7 @@ const api = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 async function fetcher(url: string) {
   const res = await fetch(url);
   if (!res.ok) {
-    throw Error('Error fetching data');
+    return { error: true };
   }
   return res.json();
 }
@@ -16,6 +16,7 @@ async function fetcher(url: string) {
 function Search() {
   const [inputWord, setInputWord] = useState('');
   const [searchWord, setSearchWord] = useState('');
+  const [wordNotFound, setWordNotFound] = useState(false);
 
   const { data, error } = useSWR(
     searchWord ? () => `${api}${searchWord}` : null,
@@ -30,6 +31,11 @@ function Search() {
     [inputWord],
   );
 
+  const updateSearchWord = (word: string) => {
+    setInputWord(word); // update the input field with the new word
+    setSearchWord(word); // perform the search with the new word
+  };
+
   if (error) return <div>Error: {error.message}</div>;
   if (!data && searchWord) return <div>Loading...</div>;
 
@@ -43,7 +49,13 @@ function Search() {
         setInputWord={setInputWord}
         handleSubmit={handleSubmit}
       />
-      {result && <WordDisplay result={result} />}
+      {result && (
+        <WordDisplay
+          result={result}
+          setSearchWord={updateSearchWord}
+          wordNotFound={wordNotFound}
+        />
+      )}
     </search>
   );
 }
