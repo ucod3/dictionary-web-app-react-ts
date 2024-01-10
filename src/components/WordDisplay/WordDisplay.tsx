@@ -46,7 +46,14 @@ function WordDisplay({ result }: WordDisplayProps) {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <h2 className='text-xl font-bold md:text-2xl '>{result.word}</h2>
+        <div className='flex flex-col gap-2'>
+          <h2 className='text-xl font-bold md:text-2xl '>{result.word}</h2>
+          {firstPhonetic && (
+            <p className='text-base md:text-xl text-primary-accent'>
+              {firstPhonetic.text}
+            </p>
+          )}
+        </div>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='75'
@@ -67,16 +74,17 @@ function WordDisplay({ result }: WordDisplayProps) {
         </svg>
       </article>
 
-      {firstPhonetic && (
-        <p className='text-md md:text-xl text-primary-accent'>
-          {firstPhonetic.text}
-        </p>
-      )}
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
         return (
           <article key={uniqueMeaningId} className='mb-4'>
-            <h3 className='mb-2 font-bold text-1xl'>{meaning.partOfSpeech}</h3>
+            <h3 className='text-xl font-bold my-9 '>
+              <div className='flex items-center'>
+                {meaning.partOfSpeech}
+                <hr className='flex-grow ml-4 border-secondary-accent' />
+              </div>
+            </h3>
+
             <h3 className='mb-2 font-bold text-l'>Meaning</h3>
             {meaning.definitions.map((definition, definitionIndex) => {
               const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
