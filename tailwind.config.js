@@ -9,6 +9,7 @@ module.exports = {
       'secondary-accent': 'hsl(var(--secondary-accent) / <alpha-value>)',
       'secondary-foreground':
         'hsl(var(--secondary-foreground) / <alpha-value>)',
+      'quote-foreground': 'hsl(var(--quote-foreground) / <alpha-value>)',
       primary: 'hsl(var(--primary) / <alpha-value>)',
       secondary: 'hsl(var(--secondary) / <alpha-value>)',
       'toggle-bg': 'hsl(var(--toggle-bg) / <alpha-value>)',
