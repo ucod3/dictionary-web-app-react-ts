@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, useState } from 'react';
 
 type Phonetic = {
   text: string;
@@ -33,20 +33,45 @@ function WordDisplay({ result }: WordDisplayProps) {
     (phonetic) => phonetic.text && phonetic.audio,
   );
   const firstPhonetic = validPhonetics[0];
+  function playAudio() {
+    const audio = new Audio(firstPhonetic.audio);
+    audio.play();
+  }
+  const [hover, setHover] = useState(false);
+
   return (
     <section>
-      <h2 className='mb-4 text-2xl font-bold'>{result.word}</h2>
-      {firstPhonetic && (
-        <article className='mb-4'>
-          <p className='text-lg'>{firstPhonetic.text}</p>
-          <audio controls className='mt-2'>
-            <source src={firstPhonetic.audio} type='audio/mpeg' />
-            <track kind='captions' src='captions.vtt' srcLang='en' />
-            Your browser does not support the audio element.
-          </audio>
-        </article>
-      )}
+      <article
+        className={`flex items-center justify-between ${hover ? 'hover' : ''}`}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <h2 className='text-xl font-bold md:text-2xl '>{result.word}</h2>
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='75'
+          height='75'
+          viewBox='0 0 75 75'
+          className='w-12 h-12 md:w-[75px] md:h-[75px] text-primary-accent'
+          onClick={playAudio}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              playAudio();
+            }
+          }}
+        >
+          <g fill='currentColor' fillRule='evenodd'>
+            <circle className='circle' cx='37.5' cy='37.5' r='37.5' />
+            <path className='path' d='M29 27v21l21-10.5z' />
+          </g>
+        </svg>
+      </article>
 
+      {firstPhonetic && (
+        <p className='text-md md:text-xl text-primary-accent'>
+          {firstPhonetic.text}
+        </p>
+      )}
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
         return (
@@ -61,6 +86,7 @@ function WordDisplay({ result }: WordDisplayProps) {
                 </article>
               );
             })}
+
             {meaning.synonyms.length > 0 && (
               <article className='mb-2'>
                 <h4 className='mb-2 text-lg font-bold'>Synonyms</h4>
