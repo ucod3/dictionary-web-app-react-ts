@@ -43,15 +43,22 @@ function WordDisplay({
 
   const [hover, setHover] = useState(false);
 
-  const [isSerif, setIsSerif] = useState(false);
-
   const { font } = useFont();
+
+  const [isSerif, setIsSerif] = useState(false);
+  const [isMono, setIsMono] = useState(false);
 
   useEffect(() => {
     if (font === 'sans') {
       setIsSerif(true);
+      setIsMono(false);
     }
-    if (font === 'serif' || font === 'mono') {
+    if (font === 'serif') {
+      setIsSerif(false);
+      setIsMono(false);
+    }
+    if (font === 'mono') {
+      setIsMono(true);
       setIsSerif(false);
     }
   }, [font]);
@@ -67,7 +74,29 @@ function WordDisplay({
   }
 
   if (wordNotFound) {
-    return <div className='text-error'>No Definitions Found</div>;
+    return (
+      <article>
+        <h1>FAQ</h1>
+        <dl>
+          <dt>What do we want?</dt>
+          <dd>Our data.</dd>
+          <dt>When do we want it?</dt>
+          <dd>Now.</dd>
+          <dt>Where is it?</dt>
+          <dd>We are not sure.</dd>
+        </dl>
+      </article>
+      // <article>
+      //   <p>😕</p>
+      //   <h2 className='text-error'>No Definitions Found</h2>
+
+      //   <p>
+      //     Sorry pal, we couldn&#39;t find definitions for the word you were
+      //     looking for. You can try the search again at later time or head to the
+      //     web instead.
+      //   </p>
+      // </article>
+    );
   }
 
   return wordNotFound ? (
@@ -87,24 +116,27 @@ function WordDisplay({
             </p>
           )}
         </div>
-        <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width='75'
-          height='75'
-          viewBox='0 0 75 75'
-          className='w-12 h-12 md:w-[75px] md:h-[75px] text-primary-accent'
-          onClick={playAudio}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              playAudio();
-            }
-          }}
-        >
-          <g fill='currentColor' fillRule='evenodd'>
-            <circle className='circle' cx='37.5' cy='37.5' r='37.5' />
-            <path className='path' d='M29 27v21l21-10.5z' />
-          </g>
-        </svg>
+
+        {firstPhonetic && (
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='75'
+            height='75'
+            viewBox='0 0 75 75'
+            className='w-12 h-12 md:w-[75px] md:h-[75px] text-primary-accent'
+            onClick={playAudio}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                playAudio();
+              }
+            }}
+          >
+            <g fill='currentColor' fillRule='evenodd'>
+              <circle className='circle' cx='37.5' cy='37.5' r='37.5' />
+              <path className='path' d='M29 27v21l21-10.5z' />
+            </g>
+          </svg>
+        )}
       </section>
       {result.meanings.map((meaning, meaningIndex) => {
         const uniqueMeaningId = `${id}-meaning-${meaningIndex}`;
@@ -121,71 +153,107 @@ function WordDisplay({
               </h3>
               <hr className='flex-grow ml-4 border-secondary-accent' />
             </div>
+            <section>
+              <h3 className='mb-4 text-base md:mb-7 text-secondary-foreground md:text-lg'>
+                Meaning
+              </h3>
+              <ul
+                key={uniqueMeaningId}
+                className={`text-base-b md:text-md mx-6 md:mx-9 mt-6 list-disc list-outside marker:text-primary-accent ${
+                  meaning.synonyms.length > 0 ? 'mb-6 md:mb-10 lg:mb-16' : ''
+                }`}
+              >
+                {meaning.definitions.map((definition, definitionIndex) => {
+                  const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
 
-            <h3 className='mb-2 text-base text-secondary-foreground md:text-lg'>
-              Meaning
-            </h3>
-            <ul
-              key={uniqueMeaningId}
-              className={`text-base-b md:text-md mx-6 md:mx-9 mt-6 list-disc list-outside marker:text-primary-accent ${
-                meaning.synonyms.length > 0 ? 'mb-6 md:mb-10 lg:mb-16' : ''
-              }`}
-            >
-              {meaning.definitions.map((definition, definitionIndex) => {
-                const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
-                return (
-                  <li key={uniqueDefinitionId} className='mb-[13px] '>
-                    {definition.definition}
-                    {definition.example && (
-                      <blockquote className='text-quote-foreground my-[13px] before:content-["“"] after:content-["”"]'>
-                        {definition.example}
-                      </blockquote>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-
-            {meaning.synonyms.length > 0 && (
-              <section className='flex gap-6 mb-2 text-base md:text-lg'>
-                <h4 className='mb-2 text-secondary-foreground'>Synonyms</h4>
-                <ul className='list-disc list-inside'>
-                  <li className='mb-1 font-bold list-none text-primary-accent'>
-                    <button
-                      type='button'
-                      onClick={() => setSearchWord(meaning.synonyms[0])}
-                    >
-                      {meaning.synonyms[0]}
-                    </button>
-                  </li>
-                </ul>
-              </section>
-            )}
-
-            {/* {meaning.synonyms.length > 0 && (
-              <section className='flex gap-6 mb-2 text-base md:text-lg'>
-                <h4 className='mb-2 text-secondary-foreground'>Synonyms</h4>
-                <ul className='list-disc list-inside'>
-                  {meaning.synonyms.slice(0, 3).map((synonym, synonymIndex) => {
-                    const uniqueSynonymId = `${uniqueMeaningId}-synonym-${synonymIndex}`;
-                    return (
-                      <li
-                        key={uniqueSynonymId}
-                        className='mb-1 font-bold list-none text-primary-accent'
-                      >
-                        {synonym}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-            )} */}
+                  return (
+                    <li key={uniqueDefinitionId} className=''>
+                      {definition.definition}
+                      {definition.example && (
+                        <blockquote className='text-quote-foreground my-[13px] '>
+                          <p className='before:content-["“"] after:content-["”"]'>
+                            {definition.example}
+                          </p>
+                        </blockquote>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+              {meaning.synonyms.length > 0 && (
+                <section className='flex gap-6 mb-2 text-base md:text-lg'>
+                  <h4 className='mb-2 text-secondary-foreground'>Synonyms</h4>
+                  <ul className='flex flex-wrap gap-2 list-disc list-inside '>
+                    {meaning.synonyms
+                      // .slice(0, 3)
+                      .map((synonym, synonymIndex) => {
+                        const uniqueSynonymId = `${uniqueMeaningId}-synonym-${synonymIndex}`;
+                        return (
+                          <li
+                            key={uniqueSynonymId}
+                            className='mb-1 font-bold list-none text-primary-accent after:content-[","] last:after:content-[""]'
+                          >
+                            <button
+                              type='button'
+                              onClick={() => setSearchWord(synonym)}
+                            >
+                              {synonym}
+                            </button>
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </section>
+              )}
+            </section>
           </section>
         );
       })}
-      <footer className='mt-8'>
-        <hr className='flex-grow border-secondary-accent' />
-        <p>Source: {result.sourceUrls} </p>
+      <footer className='mt-8 mb-12'>
+        <hr className='flex-grow pb-6 md:pb-5 border-secondary-accent' />
+        <section className='flex items-end gap-2 md:items-center'>
+          <dl
+            className={`gap-6 text-sm ${!isMono ? 'underline' : 'no-underline'}
+            md:flex underline-offset-4 text-secondary-foreground`}
+          >
+            <dt className='mb-2 md:mb-0 text-secondary-foreground'>Source</dt>
+            <dd className='text-sm text-primary-foreground'>
+              <a
+                href={`https://en.wiktionary.org/wiki/${result.word}`}
+                target='_blank'
+                rel='noopener noreferrer'
+                title={`Link to ${result.word} on Wiktionary`}
+              >
+                {result.sourceUrls}{' '}
+              </a>
+            </dd>
+          </dl>
+          <a
+            href={`https://en.wiktionary.org/wiki/${result.word}`}
+            target='_blank'
+            rel='noopener noreferrer'
+            title={`Link to ${result.word} on Wiktionary`}
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='14'
+              height='14'
+              viewBox='0 0 14 14'
+              aria-hidden='true'
+              className='self-center'
+            >
+              <path
+                fill='none'
+                stroke='#838383'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='1.5'
+                d='M6.09 3.545H2.456A1.455 1.455 0 0 0 1 5v6.545A1.455 1.455 0 0 0 2.455 13H9a1.455 1.455 0 0 0 1.455-1.455V7.91m-5.091.727 7.272-7.272m0 0H9m3.636 0V5'
+              />
+            </svg>
+            <span className='sr-only'>Link to {result.word} on Wiktionary</span>
+          </a>
+        </section>
       </footer>
     </article>
   );
