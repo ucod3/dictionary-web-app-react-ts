@@ -62,9 +62,9 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
     return null;
   }
 
-  const firstPhonetic = validPhonetics[0];
+  const firstPhonetic = validPhonetics?.[0];
   function playAudio() {
-    const audio = new Audio(firstPhonetic.audio);
+    const audio = new Audio(firstPhonetic?.audio);
     audio.play();
   }
 
