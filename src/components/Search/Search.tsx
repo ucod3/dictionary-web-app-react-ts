@@ -12,15 +12,11 @@ function Search() {
 
   const fetcher = async (url: string) => {
     const response = await fetch(url);
-    console.log(response);
     if (!response.ok) {
-      // throw new Error('No Definitions Found');
-      const error = await response.json();
-      console.log(error);
+      throw new Error('No Definitions Found');
     }
 
     const data = await response.json();
-    console.log(data);
     return data[0];
   };
 
