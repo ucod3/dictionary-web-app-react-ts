@@ -3,21 +3,6 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
-    colors: {
-      'primary-foreground': 'hsl(var(--primary-foreground) / <alpha-value>)',
-      'primary-accent': 'hsl(var(--primary-accent) / <alpha-value>)',
-      'secondary-accent': 'hsl(var(--secondary-accent) / <alpha-value>)',
-      'secondary-foreground':
-        'hsl(var(--secondary-foreground) / <alpha-value>)',
-      'quote-foreground': 'hsl(var(--quote-foreground) / <alpha-value>)',
-      primary: 'hsl(var(--primary) / <alpha-value>)',
-      secondary: 'hsl(var(--secondary) / <alpha-value>)',
-      'toggle-bg': 'hsl(var(--toggle-bg) / <alpha-value>)',
-      'toggle-fg': 'hsl(var(--toggle-fg) / <alpha-value>)',
-      'toggle-accent': 'hsl(var(--toggle-accent) / <alpha-value>)',
-      error: 'hsl(var(--error) / <alpha-value>)',
-      'error-foreground': 'hsl(var(--error-foreground) / <alpha-value>)',
-    },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
       serif: ['Lora', 'serif'],
@@ -42,7 +27,23 @@ module.exports = {
       italic: 'italic',
     },
 
-    extend: {},
+    extend: {
+      colors: {
+        'primary-foreground': 'hsl(var(--primary-foreground) / <alpha-value>)',
+        'primary-accent': 'hsl(var(--primary-accent) / <alpha-value>)',
+        'secondary-accent': 'hsl(var(--secondary-accent) / <alpha-value>)',
+        'secondary-foreground':
+          'hsl(var(--secondary-foreground) / <alpha-value>)',
+        'quote-foreground': 'hsl(var(--quote-foreground) / <alpha-value>)',
+        primary: 'hsl(var(--primary) / <alpha-value>)',
+        secondary: 'hsl(var(--secondary) / <alpha-value>)',
+        'toggle-bg': 'hsl(var(--toggle-bg) / <alpha-value>)',
+        'toggle-fg': 'hsl(var(--toggle-fg) / <alpha-value>)',
+        'toggle-accent': 'hsl(var(--toggle-accent) / <alpha-value>)',
+        error: 'hsl(var(--error) / <alpha-value>)',
+        'error-foreground': 'hsl(var(--error-foreground) / <alpha-value>)',
+      },
+    },
   },
 
   plugins: [],
