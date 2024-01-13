@@ -86,16 +86,18 @@ export function DropdownMenu({
   );
 }
 
-export function DropdownItem(
-  props: { href?: string } & HeadlessMenuItemProps<'button'>,
-) {
+export function DropdownItem({
+  href,
+  className,
+  ...rest
+}: { href?: string } & HeadlessMenuItemProps<'button'>) {
   return (
     <HeadlessMenuItem
-      as={props.href ? Link : 'button'}
-      type={props.href ? undefined : 'button'}
-      {...props}
+      as={href ? Link : 'button'}
+      type={href ? undefined : 'button'}
+      {...rest}
       className={clsx(
-        props.className,
+        className,
 
         // Base styles
         'group cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5',
@@ -224,7 +226,7 @@ export function DropdownShortcut({
     >
       {(Array.isArray(keys) ? keys : keys.split('')).map((char, index) => (
         <kbd
-          key={index}
+          key={char}
           className={clsx([
             'min-w-[2ch] text-center font-sans capitalize text-zinc-400 group-data-[focus]:text-white forced-colors:group-data-[focus]:text-[HighlightText]',
 
