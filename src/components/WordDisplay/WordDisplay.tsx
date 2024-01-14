@@ -90,7 +90,7 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
             width='75'
             height='75'
             viewBox='0 0 75 75'
-            className='w-12 h-12 md:w-[75px] md:h-[75px] text-primary-accent'
+            className='w-12 h-12 md:w-[75px] md:h-[75px] text-primary-accent cursor-pointer'
             onClick={playAudio}
             onKeyDown={(e) => {
               if (e.key === 'Enter' || e.key === ' ') {
