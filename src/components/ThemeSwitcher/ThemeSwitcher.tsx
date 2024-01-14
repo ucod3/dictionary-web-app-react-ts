@@ -14,7 +14,7 @@ function ThemeSwitcher() {
     <article className='flex items-center'>
       <Switch
         checked={theme === 'dark'}
-        className='focus:ring-0 focus:outline-none'
+        className='cursor-pointer focus:ring-0 focus:outline-none'
         onChange={handleThemeChange}
       />
 
