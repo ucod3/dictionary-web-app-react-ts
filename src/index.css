@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  overflow-y: scroll;
-}
 @layer base {
   :root {
     --primary: 0deg 0% 100%; /* #fff */
