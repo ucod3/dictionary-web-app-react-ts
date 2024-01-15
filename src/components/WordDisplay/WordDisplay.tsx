@@ -184,19 +184,19 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
             md:flex underline-offset-4 text-secondary-foreground`}
           >
             <dt className='mb-2 md:mb-0 text-secondary-foreground'>Source</dt>
-            <dd className='text-sm text-primary-foreground'>
+            <dd className='text-sm text-balance text-primary-foreground'>
               <a
-                href={`https://en.wiktionary.org/wiki/${result.word}`}
+                href={result.sourceUrls[0]}
                 target='_blank'
                 rel='noopener noreferrer'
                 title={`Link to ${result.word} on Wiktionary`}
               >
-                {result.sourceUrls}{' '}
+                {result.sourceUrls[0]}{' '}
               </a>
             </dd>
           </dl>
           <a
-            href={`https://en.wiktionary.org/wiki/${result.word}`}
+            href={result.sourceUrls[0]}
             target='_blank'
             rel='noopener noreferrer'
             title={`Link to ${result.word} on Wiktionary`}
