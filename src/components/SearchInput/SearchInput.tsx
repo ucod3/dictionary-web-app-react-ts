@@ -6,30 +6,35 @@ type SearchInputProps = {
   inputWord: string;
   setInputWord: (search: string) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  setResult: (result: null) => void;
+  isSubmitted: boolean;
+  setIsSubmitted: (isSubmitted: boolean) => void;
 };
 
 function SearchInput({
   inputWord,
   setInputWord,
   handleSubmit,
+  setResult,
+  isSubmitted,
+  setIsSubmitted,
 }: SearchInputProps) {
   const Id = useId();
-  const [isEmpty, setIsEmpty] = useState(false);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setInputWord(e.target.value);
-      if (isEmpty) {
-        setIsEmpty(false);
-      }
+      const { value } = e.target;
+      setInputWord(value);
+      setIsSubmitted(false);
     },
-    [setInputWord, isEmpty],
+    [setInputWord, setIsSubmitted],
   );
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitted(true);
     if (!inputWord.trim()) {
-      setIsEmpty(true);
+      setResult(null);
       return;
     }
     handleSubmit(e);
@@ -52,15 +57,17 @@ function SearchInput({
           value={inputWord}
           onChange={handleChange}
           placeholder='Search for any word…'
-          invalid={isEmpty}
+          invalid={!inputWord && isSubmitted}
           autoComplete='off'
         />
-        {isEmpty && <ErrorMessage>Whoops, can&apos;t be empty...</ErrorMessage>}
+        {!inputWord && isSubmitted && (
+          <ErrorMessage>Whoops, can&apos;t be empty...</ErrorMessage>
+        )}
       </Field>
 
       <div
         className={`absolute flex w-6 h-6  text-primary-accent top- right-6 ${
-          isEmpty ? 'top-[68px]' : ''
+          !inputWord ? 'top-[68px]' : ''
         }`}
       >
         <svg
