@@ -8,24 +8,6 @@ module.exports = {
       serif: ['Lora', 'serif'],
       mono: ['Inconsolata', 'monospace'],
     },
-    fontSize: {
-      sm: ['14px', '17px'],
-      'base-b': ['15px', '24px'],
-      base: ['16px', '24px'],
-      md: ['18px', '24px'],
-      lg: ['20px', '24px'],
-      xl: ['24px', '29px'],
-      '1xl': ['32px', '36px'],
-      '2xl': ['64px', '77px'],
-    },
-    fontWeight: {
-      normal: '400',
-      bold: '700',
-    },
-    fontStyle: {
-      normal: 'normal',
-      italic: 'italic',
-    },
 
     extend: {
       colors: {
@@ -42,6 +24,27 @@ module.exports = {
         'toggle-accent': 'hsl(var(--toggle-accent) / <alpha-value>)',
         error: 'hsl(var(--error) / <alpha-value>)',
         'error-foreground': 'hsl(var(--error-foreground) / <alpha-value>)',
+      },
+      fontSize: {
+        sm: ['14px', '17px'],
+        'base-b': ['15px', '24px'],
+        base: ['16px', '24px'],
+        md: ['18px', '24px'],
+        lg: ['20px', '24px'],
+        xl: ['24px', '29px'],
+        '1xl': ['32px', '36px'],
+        '2xl': ['64px', '77px'],
+      },
+      fontWeight: {
+        normal: '400',
+        bold: '700',
+      },
+      fontStyle: {
+        normal: 'normal',
+        italic: 'italic',
+      },
+      boxShadow: {
+        dnl: '0px 5px 30px 0px rgba(0, 0, 0, 0.10)',
       },
     },
   },
