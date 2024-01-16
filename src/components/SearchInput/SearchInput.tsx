@@ -1,4 +1,4 @@
-import React, { useId, useCallback, useState } from 'react';
+import React, { useId, useCallback } from 'react';
 import { ErrorMessage, Field } from '../fieldset';
 import Input from '../input';
 
