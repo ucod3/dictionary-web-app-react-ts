@@ -28,14 +28,11 @@ type WordResult = {
 type WordDisplayProps = {
   result: WordResult | null;
   setSearchWord: (word: string) => void;
+  isSubmitted: boolean;
 };
 
-function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
+function WordDisplay({ result, setSearchWord, isSubmitted }: WordDisplayProps) {
   const id = useId();
-  const validPhonetics = result?.phonetics.filter(
-    (phonetic) => phonetic.text && phonetic.audio,
-  );
-
   const [hover, setHover] = useState(false);
 
   const { font } = useFont();
@@ -58,9 +55,13 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
     }
   }, [font]);
 
-  if (!result) {
+  if (isSubmitted && !result) {
     return null;
   }
+
+  const validPhonetics = result?.phonetics.filter(
+    (phonetic) => phonetic.text && phonetic.audio,
+  );
 
   const firstPhonetic = validPhonetics?.[0];
   function playAudio() {
@@ -68,7 +69,7 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
     audio.play();
   }
 
-  return (
+  return result ? (
     <article>
       <section
         className={`flex items-center justify-between ${hover ? 'hover' : ''}`}
@@ -223,7 +224,7 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
         </section>
       </footer>
     </article>
-  );
+  ) : null;
 }
 
 export default WordDisplay;
