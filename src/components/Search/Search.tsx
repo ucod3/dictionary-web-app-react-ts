@@ -9,6 +9,7 @@ function Search() {
   const [inputWord, setInputWord] = useState('');
   const [searchWord, setSearchWord] = useState('');
   const [result, setResult] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const fetcher = async (url: string) => {
     const response = await fetch(url);
@@ -61,6 +62,9 @@ function Search() {
         inputWord={inputWord}
         setInputWord={setInputWord}
         handleSubmit={handleSubmit}
+        setResult={setResult}
+        isSubmitted={isSubmitted}
+        setIsSubmitted={setIsSubmitted}
       />
       {error ? (
         <article className='flex flex-col my-8 text-center  md:my-28 w-full max-w-[736px] mx-auto'>
@@ -75,7 +79,11 @@ function Search() {
           <p className='order-first text-2xl'>😕</p>
         </article>
       ) : (
-        <WordDisplay result={result || null} setSearchWord={updateSearchWord} />
+        <WordDisplay
+          result={result || null}
+          setSearchWord={updateSearchWord}
+          isSubmitted={isSubmitted}
+        />
       )}
     </search>
   );
