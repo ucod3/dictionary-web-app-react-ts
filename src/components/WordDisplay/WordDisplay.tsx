@@ -134,7 +134,7 @@ function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
                   const uniqueDefinitionId = `${uniqueMeaningId}-definition-${definitionIndex}`;
 
                   return (
-                    <li key={uniqueDefinitionId} className=''>
+                    <li key={uniqueDefinitionId} className='mb-[13px]'>
                       {definition.definition}
                       {definition.example && (
                         <blockquote className='text-quote-foreground my-[13px] '>
