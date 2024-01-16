@@ -58,7 +58,11 @@ function SearchInput({
         {isEmpty && <ErrorMessage>Whoops, can&apos;t be empty...</ErrorMessage>}
       </Field>
 
-      <div className='absolute flex w-6 h-6 inset-y-9.5 right-6 text-primary-accent'>
+      <div
+        className={`absolute flex w-6 h-6  text-primary-accent top- right-6 ${
+          isEmpty ? 'top-[68px]' : ''
+        }`}
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
