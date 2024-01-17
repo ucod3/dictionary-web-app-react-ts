@@ -1,5 +1,5 @@
 import useTheme from '../../hooks/useTheme';
-import { Switch } from '../switch';
+import Switch from '../switch';
 import { Theme } from '../../types/themeTypes';
 
 function ThemeSwitcher() {
