@@ -9,6 +9,7 @@ type SearchInputProps = {
   setResult: (result: null) => void;
   isSubmitted: boolean;
   setIsSubmitted: (isSubmitted: boolean) => void;
+  setWordNotFound: (wordNotFound: boolean) => void;
 };
 
 function SearchInput({
@@ -18,24 +19,27 @@ function SearchInput({
   setResult,
   isSubmitted,
   setIsSubmitted,
+  setWordNotFound,
 }: SearchInputProps) {
   const Id = useId();
+  const isErrored = !inputWord && isSubmitted;
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
       setInputWord(value);
-      setIsSubmitted(false);
     },
-    [setInputWord, setIsSubmitted],
+    [setInputWord],
   );
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true);
     if (!inputWord.trim()) {
       setResult(null);
-      return;
+      setIsSubmitted(true);
+      setWordNotFound(false);
+    } else {
+      setIsSubmitted(false);
     }
     handleSubmit(e);
   };
@@ -57,10 +61,10 @@ function SearchInput({
           value={inputWord}
           onChange={handleChange}
           placeholder='Search for any word…'
-          invalid={!inputWord && isSubmitted}
+          invalid={isErrored}
           autoComplete='off'
         />
-        {!inputWord && isSubmitted && (
+        {isErrored && (
           <ErrorMessage>Whoops, can&apos;t be empty...</ErrorMessage>
         )}
       </Field>
