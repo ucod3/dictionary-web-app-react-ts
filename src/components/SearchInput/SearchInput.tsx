@@ -60,6 +60,11 @@ function SearchInput({
           name='search'
           value={inputWord}
           onChange={handleChange}
+          onBlur={() => {
+            if (!inputWord.trim()) {
+              setIsSubmitted(false);
+            }
+          }}
           placeholder='Search for any word…'
           invalid={isErrored}
           autoComplete='off'
