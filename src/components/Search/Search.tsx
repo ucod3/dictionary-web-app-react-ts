@@ -3,6 +3,7 @@ import SearchInput from '../SearchInput';
 import WordDisplay from '../WordDisplay';
 import NotFound from '../NotFound';
 import useSearchWord from '../../hooks/useSearchWord';
+import LoadingSpinner from '../LoadingSpinner';
 
 function Search() {
   const [inputWord, setInputWord] = useState('');
@@ -10,6 +11,7 @@ function Search() {
   const [result, setResult] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [wordNotFound, setWordNotFound] = useState(false);
+  const [delayPassed, setDelayPassed] = useState(false);
 
   const { data, isLoading } = useSearchWord({ searchWord, setWordNotFound });
 
@@ -20,6 +22,16 @@ function Search() {
       setResult(null);
     }
   }, [data]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDelayPassed(true);
+    }, 1000); // 1000ms delay
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const handleSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
@@ -41,15 +53,15 @@ function Search() {
 
   let content = null;
 
-  if (isLoading) {
-    content = <p>Loading...</p>;
+  if (isLoading && delayPassed) {
+    content = <LoadingSpinner />;
   }
 
-  if (wordNotFound) {
+  if (wordNotFound && !isLoading) {
     content = <NotFound wordNotFound={wordNotFound} />;
   }
 
-  if (result) {
+  if (result && !isLoading) {
     content = (
       <WordDisplay result={result || null} setSearchWord={updateSearchWord} />
     );
