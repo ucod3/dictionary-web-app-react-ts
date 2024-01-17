@@ -28,7 +28,7 @@ const styles = {
     'px-[calc(theme(spacing[3.5])-1px)] py-[calc(theme(spacing[2.5])-1px)] sm:px-[calc(theme(spacing.3)-1px)] sm:py-[calc(theme(spacing[1.5])-1px)] sm:text-sm/6',
 
     // Focus
-    'focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-primary-accent cursor-pointer',
+    'data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-primary-accent cursor-pointer',
 
     // Disabled
     'data-[disabled]:opacity-50',
@@ -43,7 +43,9 @@ const styles = {
     // Disabled
     'before:data-[disabled]:shadow-none after:data-[disabled]:shadow-none',
   ],
-  outline: [],
+  outline: [
+    'border-primary-accent/10 text-primary-accent-950 data-[active]:bg-primary-accent-950/[2.5%] data-[hover]:bg-primary-accent-950/[2.5%]',
+  ],
   plain: [],
   colors: {
     clear: [
