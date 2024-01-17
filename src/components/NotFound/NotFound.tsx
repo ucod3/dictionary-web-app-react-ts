@@ -2,7 +2,6 @@ type NotFoundProps = {
   wordNotFound: boolean;
 };
 
-// function NotFound({ isSubmitted, error }: NotFoundProps) {
 function NotFound({ wordNotFound }: NotFoundProps) {
   if (!wordNotFound) {
     return null;
