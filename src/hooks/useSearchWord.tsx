@@ -24,6 +24,7 @@ function useSearchWord({ searchWord, setWordNotFound }: UseSearchWordProps) {
     fetcher,
     {
       shouldRetryOnError: false,
+      revalidateOnFocus: false,
       onError: () => setWordNotFound(true),
     },
   );
