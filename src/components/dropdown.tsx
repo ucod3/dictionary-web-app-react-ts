@@ -60,12 +60,10 @@ export function DropdownMenu({
           // Handle scrolling when menu won't fit in viewport
           'overflow-y-auto',
 
-          // Popover background
-
+          // Background
           'bg-primary dark:bg-secondary',
 
-          // Shadows
-          // 'drop-shadow-2xl',
+          // Shadow
           'shadow-dnl ring-1 ring-primary dark:ring-0 dark:shadow-primary-accent',
 
           // Define grid at the menu level if subgrid is supported
@@ -96,7 +94,7 @@ export function DropdownItem({
         'text-left text-sm md:text-md font-bold text-primary-foreground forced-colors:text-[CanvasText]',
 
         // Focus
-        ' data-[focus]:text-primary-accent',
+        'data-[focus]:text-primary-accent',
 
         // Disabled state
         'data-[disabled]:opacity-50',
@@ -106,10 +104,6 @@ export function DropdownItem({
 
         // Use subgrid when available but fallback to an explicit grid layout if not
         'col-span-full grid grid-cols-[auto_1fr_1.5rem_0.5rem_auto] items-center supports-[grid-template-columns:subgrid]:grid-cols-subgrid',
-
-        // Icon
-        '[&>[data-slot=icon]]:col-start-1 [&>[data-slot=icon]]:row-start-1 [&>[data-slot=icon]]:mr-2.5 [&>[data-slot=icon]]:size-5 sm:[&>[data-slot=icon]]:mr-2 [&>[data-slot=icon]]:sm:size-4',
-        '[&>[data-slot=icon]]:text-zinc-500 [&>[data-slot=icon]]:data-[focus]:text-white [&>[data-slot=icon]]:dark:text-zinc-500 [&>[data-slot=icon]]:data-[focus]:dark:text-white',
       )}
     />
   );
