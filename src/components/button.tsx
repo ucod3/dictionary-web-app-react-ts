@@ -30,6 +30,9 @@ const styles = {
     // Focus
     'data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-primary-accent cursor-pointer',
 
+    // Focus Visible
+    'focus-visible:outline  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-accent',
+
     // Disabled
     'data-[disabled]:opacity-50',
 
