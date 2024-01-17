@@ -70,8 +70,8 @@ function SearchInput({
       </Field>
 
       <div
-        className={`absolute flex w-6 h-6  text-primary-accent right-6 top-[38px] ${
-          !inputWord ? 'md:top-[68px]' : ''
+        className={`absolute flex w-6 h-6  text-primary-accent right-6 ${
+          isErrored ? 'top-[38px] md:top-[68px]' : ''
         }`}
       >
         <svg
