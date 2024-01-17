@@ -68,6 +68,7 @@ function SearchInput({
           placeholder='Search for any word…'
           invalid={isErrored}
           autoComplete='off'
+          autoFocus
         />
         {isErrored && (
           <ErrorMessage>Whoops, can&apos;t be empty...</ErrorMessage>
