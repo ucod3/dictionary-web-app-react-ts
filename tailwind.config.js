@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+
+import tailwindScrollbar from 'tailwind-scrollbar';
+
+export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   darkMode: ['class', '[data-mode="dark"]'],
   theme: {
@@ -49,5 +52,5 @@ module.exports = {
     },
   },
 
-  plugins: [require('tailwind-scrollbar')],
+  plugins: [tailwindScrollbar],
 };
