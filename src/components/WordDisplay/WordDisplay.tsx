@@ -28,10 +28,9 @@ type WordResult = {
 type WordDisplayProps = {
   result: WordResult | null;
   setSearchWord: (word: string) => void;
-  isSubmitted: boolean;
 };
 
-function WordDisplay({ result, setSearchWord, isSubmitted }: WordDisplayProps) {
+function WordDisplay({ result, setSearchWord }: WordDisplayProps) {
   const id = useId();
   const [hover, setHover] = useState(false);
 
@@ -55,7 +54,7 @@ function WordDisplay({ result, setSearchWord, isSubmitted }: WordDisplayProps) {
     }
   }, [font]);
 
-  if (isSubmitted && !result) {
+  if (!result) {
     return null;
   }
 
