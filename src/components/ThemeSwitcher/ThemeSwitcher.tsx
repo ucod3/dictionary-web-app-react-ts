@@ -12,11 +12,7 @@ function ThemeSwitcher() {
 
   return (
     <article className='flex items-center'>
-      <Switch
-        checked={theme === 'dark'}
-        className='cursor-pointer focus:ring-0 focus:outline-none'
-        onChange={handleThemeChange}
-      />
+      <Switch checked={theme === 'dark'} onChange={handleThemeChange} />
 
       <svg
         xmlns='http://www.w3.org/2000/svg'
