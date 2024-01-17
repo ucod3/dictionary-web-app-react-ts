@@ -38,10 +38,11 @@ const Input = forwardRef<
         'dark:before:hidden',
 
         // Focus ring
-        'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-primary-accent sm:after:has-[[data-focus]]:ring-2 sm:after:has-[[data-focus]]:ring-primary-accent',
+        // 'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-primary-accent sm:after:has-[[data-focus]]:ring-2 sm:after:has-[[data-focus]]:ring-primary-accent',
+        'after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-inset after:ring-primary-accent after:has-[[data-focus]]:ring-2 after:has-[[data-focus]]:ring-primary-accent',
 
-        // Active
-        'active:ring-2 active:rounded-lg  active:ring-primary-accent',
+        // Focus
+        'focus:ring-2 focus:rounded-lg focus:ring-primary-accent',
 
         // Hover
         'hover:ring-2 hover:rounded-lg  hover:ring-primary-accent',
