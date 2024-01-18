@@ -2,14 +2,15 @@
 
 ![Design preview for the Dictionary web app coding challenge](./preview.jpg)
 
-[![Node.js](https://img.shields.io/badge/Node.js-v21.2.0-10B67F.svg)](https://nodejs.org/en/)
-[![pnpm](https://img.shields.io/badge/pnpm-^8.14.0-10B67F.svg)](https://pnpm.io/)
-[![React](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.dependencies.react&label=React&color=10B67F)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.typescript&label=TypeScript&color=10B67F)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.tailwindcss&label=Tailwind%20CSS&color=10B67F)](https://tailwindcss.com/)
-[![ESLint](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.eslint&label=ESLint&color=10B67F)](https://eslint.org/)
-[![Prettier](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.prettier&label=Prettier&color=10B67F)](https://prettier.io/)
-[![Vite](https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.vite&label=Vite&color=10B67F)](https://vitejs.dev/) [![License: MIT](https://img.shields.io/badge/License-MIT-10B67F.svg)](./LICENSE.MD)
+[![Node.js][node-version]][node-url]
+[![pnpm][pnpm-version]][pnpm-url]
+[![React][react-version]][react-url]
+[![TypeScript][typescript-version]][typescript-url]
+[![Tailwind CSS][tailwindcss-version]][tailwindcss-url]
+[![ESLint][eslint-version]][eslint-url]
+[![Prettier][prettier-version]][prettier-url]
+[![Vite][vite-version]][vite-url]
+[![License: MIT][license-shield]][license-url]
 
 ## Welcome! 👋
 
@@ -169,3 +170,22 @@ Special thanks to Frontend Mentor for this challenge. I also want to acknowledge
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.MD](./LICENSE.MD) file for details.
+
+[node-version]: https://img.shields.io/badge/Node.js-v21.2.0-10B67F.svg
+[node-url]: https://nodejs.org/en/
+[pnpm-version]: https://img.shields.io/badge/pnpm-^8.11.0-10B67F.svg
+[pnpm-url]: https://pnpm.io/
+[react-version]: https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.dependencies.react&label=React&color=10B67F
+[react-url]: https://reactjs.org/
+[typescript-version]: https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.typescript&label=TypeScript&color=10B67F
+[typescript-url]: https://www.typescriptlang.org/
+[tailwindcss-version]: https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.tailwindcss&label=Tailwind%20CSS&color=10B67F
+[tailwindcss-url]: https://tailwindcss.com/
+[eslint-version]: https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.eslint&label=ESLint&color=10B67F
+[eslint-url]: https://eslint.org/
+[prettier-version]: https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.prettier&label=Prettier&color=10B67F
+[prettier-url]: https://prettier.io/
+[vite-version]: https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/ucod3/react-vite-typescript-tailwind-boilerplate/main/package.json&query=$.devDependencies.vite&label=Vite&color=10B67F
+[vite-url]: https://vitejs.dev/
+[license-shield]: https://img.shields.io/badge/License-MIT-10B67F.svg
+[license-url]: ./LICENSE.MD
