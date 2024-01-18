@@ -21,6 +21,7 @@ Thank you for checking out this coding challenge from Frontend Mentor. This dict
   - [The Challenge](#the-challenge)
   - [Live Project](#live-project)
 - [Features](#features)
+  - [Accessibility and UX Enhancements](#accessibility-and-ux-enhancements)
 - [Advanced Theming with TailwindCSS](#advanced-theming-with-tailwindcss)
 - [Custom Hooks](#custom-hooks)
 - [My Experience](#my-experience)
@@ -52,6 +53,11 @@ Check out the Dictionary Web App in action: [View Live](https://ucod3.github.io/
 - Responsive layout for various devices.
 - Dark and light mode switcher.
 - Dynamic font switching.
+
+### Accessibility and UX Enhancements
+
+- Enhanced keyboard navigation with visible outlines in the primary color, ensuring a better experience for non-mouse users.
+- Customized scroll bar styling with the primary theme color for a cohesive visual experience across different browsers and platforms.
 
 ## Advanced Theming with TailwindCSS
 
