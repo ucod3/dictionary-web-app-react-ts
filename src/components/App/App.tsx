@@ -1,6 +1,6 @@
-import Footer from '../Footer';
 import Header from '../Header';
 import Search from '../Search';
+import Footer from '../Footer';
 
 function App() {
   return (
