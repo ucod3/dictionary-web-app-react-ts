@@ -1,4 +1,4 @@
-# Dictionary Web App - Frontend Mentor Challenge Solution
+# React & TypeScript Dictionary App - A Frontend Mentor Challenge
 
 ![Design preview for the Dictionary web app coding challenge](./preview.jpg)
 
