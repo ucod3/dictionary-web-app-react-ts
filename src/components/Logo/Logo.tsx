@@ -1,7 +1,7 @@
 function Logo() {
   return (
     <a
-      href='/index.html'
+      href='https://ucod3.github.io/dictionary-web-app-react-ts/'
       aria-label='Home'
       className='focus-visible:outline-none  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-accent data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-primary-accent cursor-pointer'
     >
