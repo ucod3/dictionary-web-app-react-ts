@@ -5,7 +5,11 @@ import NotFound from '../NotFound';
 import useSearchWord from '../../hooks/useSearchWord';
 import LoadingSpinner from '../LoadingSpinner';
 
-function Search() {
+type SearchProps = {
+  className?: string;
+};
+
+function Search({ className }: SearchProps) {
   const [inputWord, setInputWord] = useState('');
   const [searchWord, setSearchWord] = useState('');
   const [result, setResult] = useState(null);
@@ -68,7 +72,7 @@ function Search() {
   }
 
   return (
-    <search className='text-primary-foreground'>
+    <search className={`text-primary-foreground ${className}`}>
       <SearchInput
         inputWord={inputWord}
         setInputWord={setInputWord}
