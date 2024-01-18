@@ -21,6 +21,7 @@ Thank you for checking out this coding challenge from Frontend Mentor. This dict
   - [The Challenge](#the-challenge)
   - [Live Project](#live-project)
 - [Features](#features)
+- [Advanced Theming with TailwindCSS](#advanced-theming-with-tailwindcss)
 - [Custom Hooks](#custom-hooks)
 - [My Experience](#my-experience)
 - [Local Installation and Setup](#local-installation-and-setup)
@@ -51,6 +52,10 @@ Check out the Dictionary Web App in action: [View Live](https://ucod3.github.io/
 - Responsive layout for various devices.
 - Dark and light mode switcher.
 - Dynamic font switching.
+
+## Advanced Theming with TailwindCSS
+
+In this project, I've implemented an advanced theming system using CSS variables integrated with TailwindCSS. This setup enables a dynamic switch between light and dark modes, showcasing the versatility of TailwindCSS when combined with native CSS features. The theming is not only responsive but also adapts to user preferences, providing an engaging and accessible user experience.
 
 ## Custom Hooks
 
